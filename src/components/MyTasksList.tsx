@@ -20,6 +20,7 @@ interface MyTasksListProps {
 }
 
 export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
+  console.log('TASKS LIST',tasks)
   return (
     <FlatList
       data={tasks}
@@ -29,14 +30,18 @@ export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
           <TouchableOpacity
             testID={`button-${index}`}
             activeOpacity={0.7}
-            //TODO - use onPress, onLongPress and style props
+            onLongPress={() => onLongPress(item.id)}
+            onPress={() => onPress(item.id)}
+           style={[item.done ? styles.taskButtonDone : styles.taskButton]}
           >
             <View 
               testID={`marker-${index}`}
-              //TODO - use style prop 
+              style={[item.done ? styles.taskMarkerDone : styles.taskMarker]}
+               
             />
             <Text 
-              //TODO - use style prop
+            style={[item.done ? styles.taskTextDone : styles.taskText]}
+              
             >
               {item.title}
             </Text>
