@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-export function Header() {
+interface ToDarkTheme{
+  darkTheme: boolean
+}
+
+export function Header({darkTheme}: ToDarkTheme) {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+    <SafeAreaView style={[styles.container, darkTheme && {backgroundColor: '#191932'}]}>
+      <View style={[styles.header, darkTheme && {backgroundColor: '#191932'}]}>
         <Text style={styles.headerText}>to.</Text>
         <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>do</Text>
       </View>
